@@ -48,7 +48,34 @@ const App: () => React$Node = () => {
           options={{ headerShown: false }}
         // options={{ title: 'Welcome' }}
         />
+        <Stack.Screen name="SelectScreen" component={SelectScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Alphabets" component={Alphabets} options={{ headerShown: false }} />
+        <Stack.Screen name="Numbers" component={Numbers} options={{ headerShown: false }} />
+
+        <Stack.Screen name="0" component={zero} options={{ headerShown: false }} />
+        <Stack.Screen name="1" component={one} options={{ headerShown: false }} />
+        <Stack.Screen name="2" component={two} options={{ headerShown: false }} />
+        <Stack.Screen name="3" component={three} options={{ headerShown: false }} />
+        <Stack.Screen name="4" component={four} options={{ headerShown: false }} />
+        <Stack.Screen name="5" component={five} options={{ headerShown: false }} />
+        <Stack.Screen name="6" component={six} options={{ headerShown: false }} />
+        <Stack.Screen name="7" component={seven} options={{ headerShown: false }} />
+        <Stack.Screen name="8" component={eight} options={{ headerShown: false }} />
+        <Stack.Screen name="9" component={nine} options={{ headerShown: false }} />
+        <Stack.Screen name="10" component={ten} options={{ headerShown: false }} />
+        <Stack.Screen name="11" component={eleven} options={{ headerShown: false }} />
+        <Stack.Screen name="12" component={twelve} options={{ headerShown: false }} />
+        <Stack.Screen name="13" component={thirteen} options={{ headerShown: false }} />
+        <Stack.Screen name="14" component={forteen} options={{ headerShown: false }} />
+        <Stack.Screen name="15" component={fifteen} options={{ headerShown: false }} />
+        <Stack.Screen name="16" component={sixteen} options={{ headerShown: false }} />
+        <Stack.Screen name="17" component={seventeen} options={{ headerShown: false }} />
+        <Stack.Screen name="18" component={eighteen} options={{ headerShown: false }} />
+        <Stack.Screen name="19" component={nineteen} options={{ headerShown: false }} />
+        <Stack.Screen name="20" component={twenty} options={{ headerShown: false }} />
+      
+
+
         <Stack.Screen name="A" component={AlphabetDetails1} options={{ headerShown: false }} />
         <Stack.Screen name="B" component={AlphabetDetails2} options={{ headerShown: false }} />
         <Stack.Screen name="C" component={AlphabetDetails3} options={{ headerShown: false }} />
@@ -92,7 +119,7 @@ const HomeScreen = ({ navigation }) => {
         <View style={styles.playButtonView}>
           <TouchableOpacity style={styles.button}
             onPress={() =>
-              navigation.navigate('Alphabets')
+              navigation.navigate('SelectScreen')
             }
           >
             <Text style={styles.text}>Play</Text>
@@ -174,6 +201,431 @@ const styles = StyleSheet.create({
 
 
 
+const SelectScreen = ({navigation}) => {
+
+  return(
+    <View style={styles.mainView}>
+      <ImageBackground source={require('./assets/background.jpg')} style={styles.image} >
+       <View style={{alignSelf: 'center', marginBottom:'80%'}}>
+        <Text style={{fontSize:30 , textAlign: 'center', marginTop: '40%', marginBottom:'10%'}} >Select what you want to learn</Text>
+       </View>
+       <View style={{flexDirection:'row', marginLeft:16, marginRight:16, alignItems:'center', justifyContent:'space-between', }}>
+       <TouchableOpacity style={styles.button}
+            onPress={() =>
+              navigation.navigate('Alphabets')
+            }
+          >
+            <Text style={styles.text}>Alphabets</Text>
+          </TouchableOpacity>
+
+        <TouchableOpacity style={styles.button}
+            onPress={() =>
+              navigation.navigate('Numbers')
+            }
+          >
+            <Text style={styles.text}>Number</Text>
+          </TouchableOpacity>
+        </View>
+      </ImageBackground>
+    </View>
+
+  )
+
+}
+
+const Numbers = ({navigation}) => {
+
+  const arrayTemp = [
+    {
+      id: 0,
+      src: require('./assets/icons/zero.png'),
+      character: "0"
+    },
+  
+    {id:1,
+     src: require('./assets/icons/one.png'),
+     character: "1"
+    },
+    {id:2,
+      src: require('./assets/icons/two.png'),
+      character: "2"
+     },
+    {id:3,
+      src: require('./assets/icons/three.png'),
+      character: "3"
+     },
+    {id:4,
+      src: require('./assets/icons/four.png'),
+      character: "4"
+
+     },
+    {id:5,
+      src: require('./assets/icons/five.png'),
+      character: "5"
+
+     },
+    {id:6,
+      src: require('./assets/icons/six.png'),
+      character: "6"
+
+     },
+    {id:7,
+      src: require('./assets/icons/seven.png'),
+      character: "7"
+
+     },
+     {id:8,
+      src: require('./assets/icons/eight.png'),
+      character: "8"
+
+     },
+     {id:9,
+      src: require('./assets/icons/nine.png'),
+      character: "9"
+
+     },
+     {id:10,
+      src: require('./assets/icons/ten.png'),
+      character: "10"
+
+     },
+     {id:11,
+      src: require('./assets/icons/eleven.png'),      
+      character: "11"
+     },
+     {id:12,
+      src: require('./assets/icons/twelve.png'),
+      character: "12"
+     },
+     {id:13,
+      src: require('./assets/icons/thirteen.png'),
+      character: "13"
+     },
+     {id:14,
+      src: require('./assets/icons/forteen.png'),
+      character: "14"
+     },
+     {id:15,
+      src: require('./assets/icons/fifteen.png'),
+      character: "15"
+     },
+     {id:16,
+      src: require('./assets/icons/sixteen.png'),
+      character: "16"
+     },
+     {id:17,
+      src: require('./assets/icons/seventeen.png'),
+      character: "17"
+     },
+     {id:18,
+      src: require('./assets/icons/eighteen.png'),
+      character: "18"
+     },
+     {id:19,
+      src: require('./assets/icons/nineteen.png'),
+      character: "19"
+     },
+     {id:20,
+      src: require('./assets/icons/twenty.png'),
+      character: "20"
+     },
+  ];
+
+  return (
+    <View style={{flex: 1,}}> 
+    <ImageBackground source={require('./assets/background.jpg')} style={styles.image} >
+    <View style={styles.detailsView}>
+      <View style={{marginLeft:16, marginRight:16, marginBottom:20, alignItems:'center'}}> 
+        <Text style={{fontSize:30}} >Select A Number</Text>
+      </View>
+    <FlatList
+      data={arrayTemp}
+      renderItem={({ item }) => {
+        var page = item.id;
+
+        // var path =''+item.src.trim();
+        // console.log(item.src)
+
+        return (
+          item.id <= 26 ? <View style={{ flex: 1, flexDirection: 'column', margin: 1, alignItems: 'center' }}>
+           <TouchableOpacity  onPress={() =>
+              navigation.navigate(item.character)
+
+            }  
+            >
+              {console.log(item.src)}
+            <Image style={styles.imageThumbnail} source={item.src} />
+            {/* {console.log(item.id+1)} */}
+         
+          </TouchableOpacity>
+          </View>
+          : <View style={{ flex: 1, flexDirection: 'column', margin: 1, alignItems: 'center' }}/>
+        )
+      }}
+      //Setting the number of column
+      numColumns={3}
+      keyExtractor={(item, index) => index}
+    />
+    </View>
+    </ImageBackground>
+    </View>
+  );
+
+}
+
+
+const zero = () => {
+  return(
+    <View style={styles.mainView} >
+      <ImageBackground source={require('./assets/background.jpg')} style={styles.image} >
+      <View style={styles.imageView}>
+        <Image style={styles.imageDetails} source={ require('./assets/icons/zero.png') } />     
+      </View>
+      </ImageBackground>
+    </View>
+  );
+}
+
+const one = () => {
+  return(
+    <View style={styles.mainView} >
+      <ImageBackground source={require('./assets/background.jpg')} style={styles.image} >
+      <View style={styles.imageView}>
+        <Image style={styles.imageDetails} source={ require('./assets/icons/one.png') } />     
+      </View>
+      </ImageBackground>
+    </View>
+  );
+}
+
+const two = () => {
+  return(
+    <View style={styles.mainView} >
+      <ImageBackground source={require('./assets/background.jpg')} style={styles.image} >
+      <View style={styles.imageView}>
+        <Image style={styles.imageDetails} source={ require('./assets/icons/two.png') } />     
+      </View>
+      </ImageBackground>
+    </View>
+  );
+}
+
+
+const three = () => {
+  return(
+    <View style={styles.mainView} >
+      <ImageBackground source={require('./assets/background.jpg')} style={styles.image} >
+      <View style={styles.imageView}>
+        <Image style={styles.imageDetails} source={ require('./assets/icons/three.png') } />     
+      </View>
+      </ImageBackground>
+    </View>
+  );
+}
+
+const four = () => {
+  return(
+    <View style={styles.mainView} >
+      <ImageBackground source={require('./assets/background.jpg')} style={styles.image} >
+      <View style={styles.imageView}>
+        <Image style={styles.imageDetails} source={ require('./assets/icons/four.png') } />     
+      </View>
+      </ImageBackground>
+    </View>
+  );
+}
+
+const five = () => {
+  return(
+    <View style={styles.mainView} >
+      <ImageBackground source={require('./assets/background.jpg')} style={styles.image} >
+      <View style={styles.imageView}>
+        <Image style={styles.imageDetails} source={ require('./assets/icons/five.png') } />     
+      </View>
+      </ImageBackground>
+    </View>
+  );
+}
+
+const six = () => {
+  return(
+    <View style={styles.mainView} >
+      <ImageBackground source={require('./assets/background.jpg')} style={styles.image} >
+      <View style={styles.imageView}>
+        <Image style={styles.imageDetails} source={ require('./assets/icons/six.png') } />     
+      </View>
+      </ImageBackground>
+    </View>
+  );
+}
+
+const seven = () => {
+  return(
+    <View style={styles.mainView} >
+      <ImageBackground source={require('./assets/background.jpg')} style={styles.image} >
+      <View style={styles.imageView}>
+        <Image style={styles.imageDetails} source={ require('./assets/icons/seven.png') } />     
+      </View>
+      </ImageBackground>
+    </View>
+  );
+}
+
+const eight = () => {
+  return(
+    <View style={styles.mainView} >
+      <ImageBackground source={require('./assets/background.jpg')} style={styles.image} >
+      <View style={styles.imageView}>
+        <Image style={styles.imageDetails} source={ require('./assets/icons/eight.png') } />     
+      </View>
+      </ImageBackground>
+    </View>
+  );
+}
+
+const nine = () => {
+  return(
+    <View style={styles.mainView} >
+      <ImageBackground source={require('./assets/background.jpg')} style={styles.image} >
+      <View style={styles.imageView}>
+        <Image style={styles.imageDetails} source={ require('./assets/icons/nine.png') } />     
+      </View>
+      </ImageBackground>
+    </View>
+  );
+}
+
+const ten = () => {
+  return(
+    <View style={styles.mainView} >
+      <ImageBackground source={require('./assets/background.jpg')} style={styles.image} >
+      <View style={styles.imageView}>
+        <Image style={styles.imageDetails} source={ require('./assets/icons/ten.png') } />     
+      </View>
+      </ImageBackground>
+    </View>
+  );
+}
+
+const eleven = () => {
+  return(
+    <View style={styles.mainView} >
+      <ImageBackground source={require('./assets/background.jpg')} style={styles.image} >
+      <View style={styles.imageView}>
+        <Image style={styles.imageDetails} source={ require('./assets/icons/eleven.png') } />     
+      </View>
+      </ImageBackground>
+    </View>
+  );
+}
+
+const twelve = () => {
+  return(
+    <View style={styles.mainView} >
+      <ImageBackground source={require('./assets/background.jpg')} style={styles.image} >
+      <View style={styles.imageView}>
+        <Image style={styles.imageDetails} source={ require('./assets/icons/twelve.png') } />     
+      </View>
+      </ImageBackground>
+    </View>
+  );
+}
+
+const thirteen = () => {
+  return(
+    <View style={styles.mainView} >
+      <ImageBackground source={require('./assets/background.jpg')} style={styles.image} >
+      <View style={styles.imageView}>
+        <Image style={styles.imageDetails} source={ require('./assets/icons/thirteen.png') } />     
+      </View>
+      </ImageBackground>
+    </View>
+  );
+}
+
+const forteen = () => {
+  return(
+    <View style={styles.mainView} >
+      <ImageBackground source={require('./assets/background.jpg')} style={styles.image} >
+      <View style={styles.imageView}>
+        <Image style={styles.imageDetails} source={ require('./assets/icons/forteen.png') } />     
+      </View>
+      </ImageBackground>
+    </View>
+  );
+}
+
+const fifteen = ()=> {
+  return(
+    <View style={styles.mainView} >
+      <ImageBackground source={require('./assets/background.jpg')} style={styles.image} >
+      <View style={styles.imageView}>
+        <Image style={styles.imageDetails} source={ require('./assets/icons/fifteen.png') } />     
+      </View>
+      </ImageBackground>
+    </View>
+  );
+}
+
+const sixteen = ()=> {
+  return(
+    <View style={styles.mainView} >
+      <ImageBackground source={require('./assets/background.jpg')} style={styles.image} >
+      <View style={styles.imageView}>
+        <Image style={styles.imageDetails} source={ require('./assets/icons/sixteen.png') } />     
+      </View>
+      </ImageBackground>
+    </View>
+  );
+}
+
+const seventeen = ()=> {
+  return(
+    <View style={styles.mainView} >
+      <ImageBackground source={require('./assets/background.jpg')} style={styles.image} >
+      <View style={styles.imageView}>
+        <Image style={styles.imageDetails} source={ require('./assets/icons/seventeen.png') } />     
+      </View>
+      </ImageBackground>
+    </View>
+  );
+}
+
+const eighteen = () => {
+  return(
+    <View style={styles.mainView} >
+      <ImageBackground source={require('./assets/background.jpg')} style={styles.image} >
+      <View style={styles.imageView}>
+        <Image style={styles.imageDetails} source={ require('./assets/icons/eighteen.png') } />     
+      </View>
+      </ImageBackground>
+    </View>
+  );
+}
+
+const nineteen = () => {
+  return(
+    <View style={styles.mainView} >
+      <ImageBackground source={require('./assets/background.jpg')} style={styles.image} >
+      <View style={styles.imageView}>
+        <Image style={styles.imageDetails} source={ require('./assets/icons/nineteen.png') } />     
+      </View>
+      </ImageBackground>
+    </View>
+  );
+}
+
+const twenty = () => {
+  return(
+    <View style={styles.mainView} >
+      <ImageBackground source={require('./assets/background.jpg')} style={styles.image} >
+      <View style={styles.imageView}>
+        <Image style={styles.imageDetails} source={ require('./assets/icons/twenty.png') } />     
+      </View>
+      </ImageBackground>
+    </View>
+  );
+}
 const Alphabets = ({navigation}) => {
 
   const [dataSource, setDataSource] = useState([]);
@@ -330,7 +782,7 @@ const Alphabets = ({navigation}) => {
     <ImageBackground source={require('./assets/background.jpg')} style={styles.image} >
     <View style={styles.detailsView}>
       <View style={{marginLeft:16, marginRight:16, marginBottom:20, alignItems:'center'}}> 
-        <Text style={{fontSize:30}} >Select an Alphabet</Text>
+        <Text style={{fontSize:30, color:'#000000'}} >Select an Alphabet</Text>
       </View>
     <FlatList
       data={arrayTemp}
@@ -366,7 +818,6 @@ const Alphabets = ({navigation}) => {
   );
 
 }
-
 
 const AlphabetDetails1 = () => {
   return(
