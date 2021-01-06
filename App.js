@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     height: 50,
-    width: 50
+    width: 50,
   },
   mainView: {
     height:'100%',
@@ -319,7 +319,6 @@ const Alphabets = ({navigation}) => {
       var source = './assets/icons/'+1+'.png';
       var source1 = './assets/icons/'+(i+1)+'.png';
       arr++;
-      console.log(i);
       return { id: i, src: require(source) };
     });
 
@@ -348,6 +347,7 @@ const Alphabets = ({navigation}) => {
 
             }  
             >
+              {console.log(item.src)}
             <Image style={styles.imageThumbnail} source={item.src} />
             {/* {console.log(item.id+1)} */}
          
