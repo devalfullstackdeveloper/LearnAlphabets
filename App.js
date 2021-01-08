@@ -1,10 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
 
 import React, { useState } from 'react';
 import {
@@ -17,12 +10,15 @@ import {
   Share,
   Dimensions,
   StatusBar,
+  Linking,
   Image,
   ImageBackground,
   TouchableOpacity,
   FlatList,
   Button
 } from 'react-native';
+
+import Sound from "react-native-sound";
 
 
 import {
@@ -41,6 +37,8 @@ import { useEffect } from 'react';
 
 
 const Stack = createStackNavigator();
+
+const whoosh  = new Sound('AZ.mp3', Sound.MAIN_BUNDLE);
 
 
 const App = () => {
@@ -119,13 +117,12 @@ const HomeScreen = ({ navigation }) => {
 
 
   let text =
-  "Want more Knowlage about top trees and flowers?\n\nLet's make your stories get more eyeballs..\nDownload TopList Nature 2021 App ";
-if (Platform.OS === "android") text = text.concat("https://elit-blogs.blogspot.com/2021/01/toplist-nature-2021.html");
-else text = text.concat("http://itunes.apple.com/app/id1547424148");
-  return (
+  "Want to teach your children alphabets and numbers?\n\nLet's make learning fun..\nDownload Fun Alphabets and Numbers 2021";
+if (Platform.OS === "android") text = text.concat("https://play.google.com/store/apps/details?id=com.fun.alphanum2021");
+else text = text.concat("http://itunes.apple.com/app/id1547972296");
+return (
     <View style={styles.container}>
       <ImageBackground  resizeMethod="resize" source={require('./assets/backgroundHome.jpg')} style={styles.image} >
-        <ScrollView>
         {/* <View>
           <Image source={require('./assets/welcome.jpg')} style={{ height: '70%', width: '100%' }} ></Image>
         </View> */}
@@ -144,14 +141,14 @@ else text = text.concat("http://itunes.apple.com/app/id1547424148");
             
             Share.share(
               {
-                subject: "Download TopList Nature 2021 App Now",
-                title: "Download TopList Nature 2021 App Now",
-                message: text,
-                url: "app://TopList Nature 2021",
+                subject: "Download Fun Alphabet and Numbers 2021 App Now",
+                title: "Download Fun Alphabet and Numbers 2021 App Now",
+                          message: text,
+                url: "app://Fun Alphabet and Numbers 2021 ",
               },
               {
                 // Android only:
-                dialogTitle: "Share TopList Nature 2021 App",
+                dialogTitle: "Fun Alphabet and Numbers 2021 App",
                 // iOS only:
                 excludedActivityTypes: [],
               }
@@ -161,7 +158,6 @@ else text = text.concat("http://itunes.apple.com/app/id1547424148");
             <Text style={styles.text}>Share</Text>
           </TouchableOpacity>
         </View>
-        </ScrollView>
       </ImageBackground>
     </View>
   );
@@ -244,20 +240,20 @@ const styles = StyleSheet.create({
 
 const shareApp = () => {
   let text =
-    "Want more Knowlage about top trees and flowers?\n\nLet's make your stories get more eyeballs..\nDownload TopList Nature 2021 App ";
-  if (Platform.OS === "android") text = text.concat("https://elit-blogs.blogspot.com/2021/01/toplist-nature-2021.html");
-  else text = text.concat("http://itunes.apple.com/app/id1547424148");
+    "Want to teach your children alphabets and numbers?\n\nLet's make learning fun..\nDownload Fun Alphabets and Numbers 2021";
+  if (Platform.OS === "android") text = text.concat("https://play.google.com/store/apps/details?id=com.fun.alphanum2021");
+  else text = text.concat("http://itunes.apple.com/app/id1547972296");
 
   Share.share(
     {
-      subject: "Download TopList Nature 2021 App Now",
-      title: "Download TopList Nature 2021 App Now",
+      subject: "Download Fun Alphabet and Numbers 2021 App Now",
+      title: "Download Fun Alphabet and Numbers 2021 App Now",
       message: text,
       url: "app://TopList Nature 2021",
     },
     {
       // Android only:
-      dialogTitle: "Share TopList Nature 2021 App",
+      dialogTitle: "Fun Alphabet and Numbers 2021 App",
       // iOS only:
       excludedActivityTypes: [],
     }
@@ -266,6 +262,12 @@ const shareApp = () => {
 
 
 const SelectScreen = ({ navigation }) => {
+  
+  const openPrv = () => {
+    Linking.openURL(
+      `https://elit-blogs.blogspot.com/2021/01/fun-alphabet-and-numbers-2021.html`
+    ).catch((err) => alert("Please check for the App Store"));
+  };
 
   return (
     <View style={styles.mainView}>
@@ -273,6 +275,8 @@ const SelectScreen = ({ navigation }) => {
         <View style={{ flexDirection: 'column', flex: 1, marginLeft: 16, marginRight: 16, alignItems: 'center', }}>
 
 
+
+          
         <View
         style={{flex:1}}
         />
@@ -292,11 +296,17 @@ const SelectScreen = ({ navigation }) => {
             >
               <Text style={styles.text}>Number</Text>
             </TouchableOpacity>
-            <View
-          style={{marginBottom:'20%'}}
-        />
 
+        
+            <View
+          
+          style={{marginBottom:'15%'}}
+        />
+        <TouchableOpacity onPress={openPrv} >
+         <Text style={{color:'#fff', paddingBottom:5}}>Privacy Policy</Text>
+        </TouchableOpacity>
         </View>
+        
       </ImageBackground>
     </View>
 
@@ -1281,6 +1291,7 @@ const AlphabetDetails23 = () => {
     </View>
   );
 }
+
 const AlphabetDetails24 = () => {
   return (
     <View style={styles.mainView} >
@@ -1325,5 +1336,7 @@ const AlphabetDetails26 = () => {
     </View>
   );
 }
+
+
 
 export default App;
