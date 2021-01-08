@@ -14,6 +14,8 @@ import {
   ScrollView,
   View,
   Text,
+  Share,
+  Dimensions,
   StatusBar,
   Image,
   ImageBackground,
@@ -21,6 +23,7 @@ import {
   FlatList,
   Button
 } from 'react-native';
+
 
 import {
   Header,
@@ -32,13 +35,15 @@ import {
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { useEffect } from 'react';
+
 
 
 
 const Stack = createStackNavigator();
 
 
-const App: () => React$Node = () => {
+const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -51,6 +56,7 @@ const App: () => React$Node = () => {
         <Stack.Screen name="SelectScreen" component={SelectScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Alphabets" component={Alphabets} options={{ headerShown: false }} />
         <Stack.Screen name="Numbers" component={Numbers} options={{ headerShown: false }} />
+        <Stack.Screen name="ShareshareApp" component={shareApp} options={{ headerShown: false }} />
 
         <Stack.Screen name="0" component={zero} options={{ headerShown: false }} />
         <Stack.Screen name="1" component={one} options={{ headerShown: false }} />
@@ -110,9 +116,16 @@ const App: () => React$Node = () => {
 
 
 const HomeScreen = ({ navigation }) => {
+
+
+  let text =
+  "Want more Knowlage about top trees and flowers?\n\nLet's make your stories get more eyeballs..\nDownload TopList Nature 2021 App ";
+if (Platform.OS === "android") text = text.concat("https://elit-blogs.blogspot.com/2021/01/toplist-nature-2021.html");
+else text = text.concat("http://itunes.apple.com/app/id1547424148");
   return (
     <View style={styles.container}>
-      <ImageBackground source={require('./assets/backgroundHome.jpg')} style={styles.image} >
+      <ImageBackground  resizeMethod="resize" source={require('./assets/backgroundHome.jpg')} style={styles.image} >
+        <ScrollView>
         {/* <View>
           <Image source={require('./assets/welcome.jpg')} style={{ height: '70%', width: '100%' }} ></Image>
         </View> */}
@@ -124,7 +137,31 @@ const HomeScreen = ({ navigation }) => {
           >
             <Text style={styles.text}>Play</Text>
           </TouchableOpacity>
+            <View style={{height:10}} />
+          <TouchableOpacity style={styles.button}
+            onPress={() =>
+              // navigation.navigate('SelectScreen')
+            
+            Share.share(
+              {
+                subject: "Download TopList Nature 2021 App Now",
+                title: "Download TopList Nature 2021 App Now",
+                message: text,
+                url: "app://TopList Nature 2021",
+              },
+              {
+                // Android only:
+                dialogTitle: "Share TopList Nature 2021 App",
+                // iOS only:
+                excludedActivityTypes: [],
+              }
+            )
+            }
+          >
+            <Text style={styles.text}>Share</Text>
+          </TouchableOpacity>
         </View>
+        </ScrollView>
       </ImageBackground>
     </View>
   );
@@ -154,7 +191,11 @@ const styles = StyleSheet.create({
   image: {
     flex: 1,
     resizeMode: "cover",
-    justifyContent: "center"
+    justifyContent: "center",
+    // height: Dimensions.get('window').height,
+    // width: Dimensions.get('window').width
+    height: '100%',
+    width: '100%'
   },
   text: {
     color: "white",
@@ -200,6 +241,28 @@ const styles = StyleSheet.create({
 
 });
 
+
+const shareApp = () => {
+  let text =
+    "Want more Knowlage about top trees and flowers?\n\nLet's make your stories get more eyeballs..\nDownload TopList Nature 2021 App ";
+  if (Platform.OS === "android") text = text.concat("https://elit-blogs.blogspot.com/2021/01/toplist-nature-2021.html");
+  else text = text.concat("http://itunes.apple.com/app/id1547424148");
+
+  Share.share(
+    {
+      subject: "Download TopList Nature 2021 App Now",
+      title: "Download TopList Nature 2021 App Now",
+      message: text,
+      url: "app://TopList Nature 2021",
+    },
+    {
+      // Android only:
+      dialogTitle: "Share TopList Nature 2021 App",
+      // iOS only:
+      excludedActivityTypes: [],
+    }
+  );
+};
 
 
 const SelectScreen = ({ navigation }) => {
@@ -382,7 +445,6 @@ const Numbers = ({ navigation }) => {
 
                   }
                   >
-                    {console.log(item.src)}
                     <Image style={styles.imageThumbnail} source={item.src} />
                     {/* {console.log(item.id+1)} */}
 
@@ -655,6 +717,7 @@ const twenty = () => {
     </View>
   );
 }
+
 const Alphabets = ({ navigation }) => {
 
   const [dataSource, setDataSource] = useState([]);
@@ -855,7 +918,6 @@ const Alphabets = ({ navigation }) => {
 
                   }
                   >
-                    {console.log(item.src)}
                     <Image style={styles.imageThumbnail} source={item.src} />
                     {/* {console.log(item.id+1)} */}
 
